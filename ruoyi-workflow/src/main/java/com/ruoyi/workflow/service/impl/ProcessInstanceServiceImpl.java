@@ -601,7 +601,7 @@ public class ProcessInstanceServiceImpl extends WorkflowService implements IProc
     public Map<String, Object> getXml(String processInstanceId) {
         Map<String, Object> map = new HashMap<>();
         List<Map<String, Object>> taskList = new ArrayList<>();
-        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+        HistoricProcessInstance processInstance = historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
         StringBuilder xml = new StringBuilder();
         ProcessDefinition processDefinition = repositoryService.getProcessDefinition(processInstance.getProcessDefinitionId());
         // 获得活动的节点
